@@ -1,0 +1,5 @@
+Internal ID,Product ID,Product name,Product price,Product quantity,Invoice ID,Supplier name,Supplier address,Supplier UEN,Date of purchase,Payment type,Invoice paid,Total price before GST,Total price after GST
+64d3fb839a8e744041342f86,64d3fb829a8e744041342f6d,milo 40 pack,60000,100,INV-2023-04/ABC/02,abc in sg,No address provided,123456789A,Wed May 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,100000,108000
+64d3fb839a8e744041342f86,64d3fb829a8e744041342f6f,colgate toothpaste 100ml,40000,100,INV-2023-04/ABC/02,abc in sg,No address provided,123456789A,Wed May 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,100000,108000
+64d3fb839a8e744041342f8a,64d3fb829a8e744041342f6d,milo 40 pack,40000,100,INV-2023-04/ABC/03,abc in sg,No address provided,123456789A,Fri May 05 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,80000,86400
+64d3fb839a8e744041342f8a,64d3fb829a8e744041342f6f,colgate toothpaste 100ml,40000,100,INV-2023-04/ABC/03,abc in sg,No address provided,123456789A,Fri May 05 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,80000,86400

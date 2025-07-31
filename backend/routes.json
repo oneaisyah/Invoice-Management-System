@@ -1,0 +1,321 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0",
+    "title": "newecon",
+    "description": "Buy or rent spacecrafts"
+  },
+  "paths": {
+    "/payment": {
+      "parameters": [],
+      "get": {
+        "summary": "retrieve all payments in collection",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved all payments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "payments retrieved"
+                    },
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Payment"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "create new payment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "payment created"
+                  },
+                  "payments": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PaymentRequestBody"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "payment added"
+                    },
+                    "payment": {
+                      "$ref": "#/components/schemas/Payment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payment/{id}": {
+      "get": {
+        "summary": "retrieve payment by ObjectID",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ObjectID of the payment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "ObjectID(Payment)"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "payment retrieved"
+                    },
+                    "payment": {
+                      "$ref": "#/components/schemas/Payment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "update existing payment",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ObjectID of the payment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "ObjectID(Payment)"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "payment updated"
+                  },
+                  "payments": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PaymentRequestBody"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "payment added"
+                    },
+                    "payment": {
+                      "$ref": "#/components/schemas/Payment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete existing payment",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ObjectID of the payment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "ObjectID(Payment)"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "payment deleted"
+                    },
+                    "payment": {
+                      "$ref": "#/components/schemas/Payment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Payment": {
+        "type": "object",
+        "required": [
+          "_id",
+          "amount",
+          "dateOfPayment",
+          "type",
+          "referenceNumber",
+          "recipientName",
+          "createdAt",
+          "updatedAt",
+          "__v"
+        ],
+        "properties": {
+          "_id": {
+            "type": "integer",
+            "format": "ObjectID(Payment)"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "dateOfPayment": {
+            "type": "string",
+            "format": "date"
+          },
+          "type": {
+            "type": "integer",
+            "format": "ObjectID(PaymentType)"
+          },
+          "referenceNumber": {
+            "type": "string"
+          },
+          "recipientName": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "__v": {
+            "type": "integer"
+          }
+        }
+      },
+      "PaymentRequestBody": {
+        "type": "object",
+        "required": [
+          "amount",
+          "dateOfPayment",
+          "type",
+          "referenceNumber",
+          "recipientName"
+        ],
+        "properties": {
+          "amount": {
+            "type": "integer"
+          },
+          "dateOfPayment": {
+            "type": "string",
+            "format": "date"
+          },
+          "type": {
+            "type": "integer",
+            "format": "ObjectID(PaymentType)"
+          },
+          "referenceNumber": {
+            "type": "string"
+          },
+          "recipientName": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human readable error message",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKey": []
+    }
+  ]
+}

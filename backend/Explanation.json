@@ -1,0 +1,89 @@
+Sending a POST request: invoice
+URL to send the POST request to: http://localhost:8888/invoice/
+Note: format of date of purchase and dates follow ISO 8601 format
+The body should contain this JSON object of this format, of this structure and style:
+{
+    "productPriceIDQuantity": [{
+        "product":"64a18e29de2afa121a8db948",
+        "price": 123,
+        "quantity": 12
+    },{
+        "product":"64a18e29de2sd",
+        "price": 1230,
+        "quantity": 12
+
+    },{
+        "product":"64a18e29de2afa121asd948",
+        "price": 12143,
+        "quantity": 12
+
+    }],
+    "invoiceID": "INV123",
+    "dateOfPurchase": "2013-04-02T14:12:07",
+    "supplier": "6498426d9712fa0786e62410",
+    "paymentType" : "6491a5d999217ce7abb64a3c",
+    "paid": true,
+    "GST" : 9,
+    "totalPriceBeforeGST": 12,
+    "totalPriceAfterGST": 13,
+    "currency": "SGD"
+}
+Take note of the fields - the weird strings are the object's _id (internal MongoDB ID). The object must exist before your POST can be successful!
+
+Sending a POST request: statementOfAccount
+URL to send the POST request to: http://localhost:8888/statementOfAccount/
+Note: format of date of purchase and dates follow ISO 8601 format
+The body should contain this JSON object of this format, of this structure and style:
+{
+    "referenceNumber": "testReference1234567",
+    "invoices": ["64a18f350bb42362532e6bab"],
+    "payments": "649e73cee4f474a00c18b84a",
+    "dateDue": "2017-04-02T14:12:07",
+    "supplier": "6498426d9712fa0786e62410",
+    "amountOutstanding": 1,
+    "amountPaid": 2,
+    "amountOverdue": 3,
+    "currency": "THB"
+}
+Take note of the fields - the weird strings are the object's _id (internal MongoDB ID). The object must exist before your POST can be successful!
+
+Sending a PUT request: invoice
+URL to send the PUT request to: http://localhost:8888/invoice/64a18f350bb42362532e6bab
+Note: format of date of purchase and dates follow ISO 8601 format
+The body should contain this JSON object of this format, of this structure and style:
+{
+    "totalPriceAfterGST": 1234
+}
+You need to put in the internal of the object that you want to update in the URL.
+
+For the fields, if it exists, it will update it. If not, it will not update the field
+You can also pass in references to other objects with the same format and structure as in the POST request (see the above)
+
+Filtering: Example
+For the fields, just follow the MiroBoard class diagram fields
+Use camelCase notation. For quantitative fields, you should add min / max as prepend:
+Example for field: 'amountPaid':
+minAmountPaid = value (NOT IN STRING)
+maxAmountPaid = value (NOT IN STRING)
+
+Filtering is mainly for GET requests. So for GET requests to use filtering, follow this structure:
+
+URL: http://localhost:8888/invoice/?productIDPriceQuantityMinPrice=499&productIDPriceQuantityMaxPrice=501
+For productIDPriceQuantity field - price: min = 499 and max = 501
+
+For CSV: http://localhost:8888/invoice/csv/?productIDPriceQuantityMinPrice=499&productIDPriceQuantityMaxPrice=501
+
+For non-quantitative fields, just put in as per normal:
+URL: http://localhost:8888/statementOfAccount/?currency=THB
+
+TLDR: Quantitative fields: Append with "min" or "max" keyword at the end of the query URL
+Then use camelCase notation.
+
+Non-quantitative fields: simply just key = value; currency = THB
+
+Sending a request without adding the JWT Token: Response will look like:
+
+{
+    "statusCode": 401,
+    "msg": "Invalid Token"
+}

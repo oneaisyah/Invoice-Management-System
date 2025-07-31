@@ -1,0 +1,8 @@
+Internal ID,Product ID,Product name,Product price,Product quantity,Invoice ID,Supplier name,Supplier address,Date of purchase,Payment type,Invoice paid,Total price before GST,Total price after GST
+64b527e3720eece0abb66cd9,64b5142b720eece0abb66cca,milo 40 pack,400,50,INV-2023-04/ABC/01,,,Mon Apr 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,56000,60480
+64b527e3720eece0abb66cd9,64b51440720eece0abb66ccc,colgate toothpaste 100ml,800,40,INV-2023-04/ABC/01,,,Mon Apr 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,56000,60480
+64b527e3720eece0abb66cd9,64b51452720eece0abb66cce,tuna sandwich 5pc in box,400,10,INV-2023-04/ABC/01,,,Mon Apr 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,56000,60480
+64b5285a720eece0abb66cde,64b5142b720eece0abb66cca,milo 40 pack,600,100,INV-2023-04/DEF/01,,,Mon Apr 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,100000,108000
+64b5285a720eece0abb66cde,64b51440720eece0abb66ccc,colgate toothpaste 100ml,400,100,INV-2023-04/DEF/01,,,Mon Apr 03 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,100000,108000
+64b528bf720eece0abb66ce2,64b5142b720eece0abb66cca,milo 40 pack,400,100,INV-2023-04/GHI/01,,,Wed Apr 05 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,80000,86400
+64b528bf720eece0abb66ce2,64b51452720eece0abb66cce,tuna sandwich 5pc in box,400,100,INV-2023-04/GHI/01,,,Wed Apr 05 2023 00:00:00 GMT+0800 (Singapore Standard Time),paylah,true,80000,86400
